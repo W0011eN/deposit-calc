@@ -1,21 +1,15 @@
-BIN=bin
-BUILD=build
-CHECK=checkdirbuild checkdirbin
+DIR=build bin
 OBJECTS=build/main.o build/deposit.o
 CC=gcc
 CFLAGS=-c -Wall
 #//////////////////////////////////////////////////////
-.PHONY: all clean
+.PHONY: all clean makedir
 
 #//////////////////////////////////////////////////////
-all: $(CHECK) main deposit deposit-calc
+all:  main deposit deposit-calc
 
-checkdirbin:
-	@if [ ! -d $(BIN) ] ; then echo "creating $(BIN)" ; mkdir bin; fi
-	@if [ -d $(BIN) ] ; then echo "$(BIN) exists"; else echo "$(BIN) not exists, error!"; exit 1; fi
-checkdirbuild:
-	@if [ ! -d $(BUILD) ] ; then echo "creating $(BUILD)" ; mkdir build; fi
-	@if [ -d $(BUILD) ] ; then echo "$(BUILD) exists"; else echo "$(BUILD) not exists, error!"; exit 1; fi
+makedir:
+	mkdir -p $(DIR) 
 main:src/main.c
 	$(CC)  -o build/main.o $(CFLAGS) -Werror src/main.c 
 
@@ -27,5 +21,3 @@ deposit-calc: $(OBJECTS)
 
 clean:
 	rm -rf build/*.* bin/* bin/*.*
-
-
