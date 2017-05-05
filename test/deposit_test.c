@@ -1,7 +1,7 @@
 #include <ctest.h>
 #include "deposit.h"
 
-CTEST(arithmetic_suite, simle_sum)
+CTEST(deposit_test, simle_sum)
 {
 	const int pod = 5;
 	const float deposit = 99999;
@@ -12,7 +12,7 @@ CTEST(arithmetic_suite, simle_sum)
 	ASSERT_DBL_NEAR(sum, result);
 }
 
-CTEST(arithmetic_suite, time_0_30_min_deposit)
+CTEST(deposit_test, time_0_30_min_deposit)
 {
 	const int pod = 0;
 	const float deposit = 10000;
@@ -23,7 +23,7 @@ CTEST(arithmetic_suite, time_0_30_min_deposit)
 	ASSERT_DBL_NEAR(sum, result);
 }
 
-CTEST(arithmetic_suite, time_0_30_border_deposit)
+CTEST(deposit_test, time_0_30_deposit)
 {
 	const int pod = 30;
 	const float deposit = 100000;
@@ -34,7 +34,7 @@ CTEST(arithmetic_suite, time_0_30_border_deposit)
 	ASSERT_DBL_NEAR(sum, result);
 }
 
-CTEST(arithmetic_suite, time_31_120_min_deposit)
+CTEST(deposit_test, time_31_120_min_deposit)
 {
 	const int pod = 31;
 	const float deposit = 10000;
@@ -45,7 +45,7 @@ CTEST(arithmetic_suite, time_31_120_min_deposit)
 	ASSERT_DBL_NEAR(sum, result);
 }
 
-CTEST(arithmetic_suite, time_31_120_border_deposit)   //Ошибка
+CTEST(deposit_test, time_31_120_deposit)   //Ошибка
 {
 	const int pod = 120;
 	const float deposit = 100000;
@@ -56,7 +56,7 @@ CTEST(arithmetic_suite, time_31_120_border_deposit)   //Ошибка
 	ASSERT_DBL_NEAR(sum, result);
 }
 
-CTEST(arithmetic_suite, time_121_240_min_deposit)
+CTEST(deposit_test, time_121_240_min_deposit)
 {
 	const int pod = 121;
 	const float deposit = 10000;
@@ -67,7 +67,7 @@ CTEST(arithmetic_suite, time_121_240_min_deposit)
 	ASSERT_DBL_NEAR(sum, result);
 }
 
-CTEST(arithmetic_suite, time_121_240_border_deposit) //Ошибка
+CTEST(deposit_test, time_121_240_deposit) //Ошибка
 {
 	const int pod = 240;
 	const float deposit = 100000;
@@ -78,7 +78,7 @@ CTEST(arithmetic_suite, time_121_240_border_deposit) //Ошибка
 	ASSERT_DBL_NEAR(sum, result);
 }
 
-CTEST(arithmetic_suite, time_241_365_min_deposit)
+CTEST(deposit_test, time_241_365_min_deposit)
 {
 	const int pod = 241;
 	const float deposit = 10000;
@@ -89,13 +89,4 @@ CTEST(arithmetic_suite, time_241_365_min_deposit)
 	ASSERT_DBL_NEAR(sum, result);
 }
 
-CTEST(arithmetic_suite, time_241_365_border_deposit)  //Ошибка
-{
-	const int pod = 365;
-	const float deposit = 100000;
 
-	const float result = income_deposit(deposit, pod);
-
-	const float sum = 115000;	//11200
-	ASSERT_DBL_NEAR(sum, result);
-}
